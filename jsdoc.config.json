@@ -1,0 +1,34 @@
+{
+  "tags": {
+      "allowUnknownTags": true,
+      "dictionaries": ["jsdoc"]
+  },
+  "source": {
+      "include": ["packages", "package.json", "README.md"],
+      "includePattern": "js$",
+      "excludePattern": "(node_modules/|docs|templates|jsdoc-template|template)"
+  },
+  "plugins": [
+  ],
+  "templates": {
+      "referenceTitle": "js",
+      "disableSort": false,
+      "collapse": true,
+      "resources": {
+
+      },
+      "search": {
+        "appId": "JRX357TS85",
+        "apiKey": "fc8c5242dce5f4212bf70c783373baab",
+        "indexName": "softvar-js"
+    }
+  },
+  "sourceType": "module",
+  "opts": {
+      "destination": "./docs/",
+      "encoding": "utf8",
+      "private": true,
+      "recurse": true,
+      "template": "node_modules/@softvar/template-jsdoc-theme/template/"
+  }
+}

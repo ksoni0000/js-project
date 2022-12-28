@@ -1,0 +1,79 @@
+{
+  "name": "js",
+  "version": "0.1.1",
+  "description": "Every possible javascript utility you ever need",
+  "main": "index.js",
+  "scripts": {
+    "dev": "lerna run tsc && yarn jsdoc && yarn lint",
+    "jsdoc": "jsdoc --configure jsdoc.config.json --verbose",
+    "new": "script-add-lerna-package",
+    "lint": "tslint -c tslint.json --fix 'packages/**/*.ts'",
+    "publish": "lerna publish",
+    "start": "yarn install; lerna run bootstrap; cd tools && yarn install && cd ..;",
+    "test": "lerna run test",
+    "tsc": "lerna run tsc",
+    "watch": "script-watch-lerna-packages --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/softvar/js.git"
+  },
+  "keywords": [
+    "js",
+    "javascript",
+    "lerna",
+    "utilities",
+    "frontend"
+  ],
+  "author": "Varun Malhotra",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/softvar/js/issues"
+  },
+  "homepage": "https://github.com/softvar/js#readme",
+  "dependencies": {
+    "lerna": "^3.22.1"
+  },
+  "devDependencies": {
+    "@softvar/githook-commitmsg": "^1.0.1",
+    "@softvar/script-add-lerna-package": "^1.0.10",
+    "@softvar/script-watch-lerna-packages": "^1.0.2",
+    "@softvar/template-jsdoc-theme": "^1.0.0",
+    "@types/jest": "^26.0.0",
+    "@types/node": "^14.0.13",
+    "husky": "^4.2.5",
+    "jest": "^26.0.1",
+    "jsdoc": "^3.6.4",
+    "lint-staged": "^10.2.9",
+    "prettier": "^2.0.5",
+    "ts-jest": "^26.1.0",
+    "tslint": "^6.1.2",
+    "typescript": "^3.9.5"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "githook-commitmsg --path=./",
+      "pre-commit": "lint-staged",
+      "pre-push": "lerna run tsc && yarn lint && yarn jsdoc && yarn test"
+    }
+  },
+  "lint-staged": {
+    "**/*.ts": [
+      "yarn lint",
+      "prettier",
+      "git add"
+    ],
+    "**/*.{json,md}": "prettier"
+  },
+  "engines": {
+    "node": ">= 12.16.0",
+    "yarn": ">= 1.22.4",
+    "npm": ">= 6.13.4"
+  },
+  "engineStrict": true,
+  "browserslist": [
+    "> 1%",
+    "last 3 versions",
+    "not ie <= 10"
+  ]
+}
